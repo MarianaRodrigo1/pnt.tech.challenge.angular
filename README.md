@@ -7,7 +7,7 @@
 
 O objetivo deste desafio é avaliar as suas competências no desenvolvimento de uma aplicação **Front-End** utilizando **Angular**, com integração a uma **API** REST já implementada em **.NET Core 7**.
 
-Você será responsável por criar a interface de utilizador para **visualizar**, **editar**, **criar** e **eliminar** produtos numa aplicação de gestão de produtos. A **API** já está disponível e exposta via **Swagger**. Você deverá consumir essa API para realizar as operações de manipulação dos dados.
+Serás responsável por criar a interface de utilizador para **visualizar**, **editar**, **criar** e **eliminar** produtos numa aplicação de gestão de produtos. A **API** já está disponível e exposta via **Swagger**. Deverás consumir essa API para realizar as operações de manipulação dos dados.
 
 ---
 
