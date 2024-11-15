@@ -1,0 +1,83 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h2>Criar conta</h2>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+
+      <div class="form-group">
+        <div class="input-group">
+          <i class="material-icons">person</i>
+          <input type="text" formControlName="username" placeholder="Nome">
+        </div>
+        <div class="error-message" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.errors">
+          <span *ngIf="registerForm.get('username')?.errors?.['required']">O nome é obrigatório</span>
+          <span *ngIf="registerForm.get('username')?.errors?.['minlength']">O nome deve ter pelo menos 3 letras</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <i class="material-icons">email</i>
+          <input type="email" formControlName="email" placeholder="Email">
+        </div>
+        <div class="error-message" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors">
+          <span *ngIf="registerForm.get('email')?.errors?.['required']">O email é obrigatório</span>
+          <span *ngIf="registerForm.get('email')?.errors?.['email']">Formato de email inválido</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <i class="material-icons">lock</i>
+          <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Senha">
+          <button type="button" class="toggle-password" (click)="hidePassword = !hidePassword">
+            <i class="material-icons">{{hidePassword ? 'visibility_off' : 'visibility'}}</i>
+          </button>
+        </div>
+        <div class="error-message" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors">
+          <span *ngIf="registerForm.get('password')?.errors?.['required']">A senha é obrigatória</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <i class="material-icons">lock_outline</i>
+          <input [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" placeholder="Confirmar Senha">
+          <button type="button" class="toggle-password" (click)="hideConfirmPassword = !hideConfirmPassword">
+            <i class="material-icons">{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</i>
+          </button>
+        </div>
+        <div class="error-message" *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.errors?.['passwordMismatch']">
+          As senhas não coincidem
+        </div>
+      </div>
+
+      <!-- Password Requirements -->
+      <div class="password-requirements" *ngIf="registerForm.get('password')?.touched">
+        <div class="requirement" [class.valid]="!registerForm.get('password')?.errors?.['required']">
+          <i class="material-icons">{{!registerForm.get('password')?.errors?.['minlength'] ? 'check_circle' : 'cancel'}}</i>
+          <span>Pelo menos 6 letas</span>
+        </div>
+        <div class="requirement" [class.valid]="!registerForm.get('password')?.errors?.['noLowerCase']">
+          <i class="material-icons">{{!registerForm.get('password')?.errors?.['noLowerCase'] ? 'check_circle' : 'cancel'}}</i>
+          <span>Uma letra minúscula e maiúscula</span>
+        </div>
+        <div class="requirement" [class.valid]="!registerForm.get('password')?.errors?.['noSpecialChar']">
+          <i class="material-icons">{{!registerForm.get('password')?.errors?.['noSpecialChar'] ? 'check_circle' : 'cancel'}}</i>
+          <span>Um caracter especial</span>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="registerForm.invalid || loading" class="submit-button">
+        <span *ngIf="!loading">Criar conta</span>
+        <div class="spinner" *ngIf="loading"></div>
+      </button>
+
+      <div class="auth-links">
+        <p>Já tens conta? <a routerLink="/login">Entrar</a></p>
+      </div>
+    </form>
+  </div>
+</div>

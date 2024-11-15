@@ -1,1 +1,27 @@
-<p>product-list works!</p>
+<div class="product-list-container">
+ 
+  <div class="product-list-header">
+    <button mat-icon-button [routerLink]="['/create']" class="create-product-button" aria-label="Criar Novo Produto">
+      <span class="material-icons">add</span>
+    </button>
+
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error">
+    <div class="product-grid">
+      <div class="product-card" *ngFor="let product of products" (click)="goToProductDetail(product.id)">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p class="price">Price: {{ product.price | currency }}</p>
+      </div>
+    </div>
+  </div>
+</div>

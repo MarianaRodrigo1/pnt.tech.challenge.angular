@@ -1,0 +1,18 @@
+{
+  "/api": {
+    "target": "https://pntechchallenge-api-bxbgbxd2b3hfg6f9.spaincentral-01.azurewebsites.net",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": "/api"
+    },
+    "headers": {
+      "apiKey": "gWzssD4yC7OijOO7yDBfVhBvGsJpPJUv",
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+      "Accept": "*/*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, DELETE"
+    }
+  }
+} 

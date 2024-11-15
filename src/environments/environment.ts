@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://pntechchallenge-api.azurewebsites.net/'
+  apiUrl: 'http://localhost:4200',//'https://pntechchallenge-api.azurewebsites.net/',
+  apiKey: 'gWzssD4yC7OijOO7yDBfVhBvGsJpPJUv' 
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

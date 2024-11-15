@@ -1,1 +1,286 @@
-/* You can add global styles to this file, and also import other style files */
+$primary-color: #6a1b9a;
+$primary-light: #ab47bc;
+$secondary-color: #a6049b;
+$error-color: #b00020;
+$success-color: #4caf50;
+$warning-color: #ffa726;
+$background-color: #f9f9f9;
+$text-color: #333333;
+$input-focus-border: #888787;
+$highlight-color: #ffd54f;
+$link-color: #1e88e5;
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  background-color: $primary-color;
+  color: $background-color;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+.error {
+  color: $error-color;
+}
+
+.success {
+  color: $secondary-color;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+  padding: 20px;
+}
+
+.auth-card {
+  background: $background-color;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  h2 {
+    color: $text-color;
+    font-size: 28px;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  p {
+    color: $text-color;
+    margin: 8px 0 0;
+    font-size: 16px;
+  }
+}
+
+.auth-form {
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #edebeb;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+
+    &:focus-within {
+      background: $background-color;
+      color: $primary-color;
+      box-shadow: 0 0 0 2px $primary-light;
+    }
+
+    i.material-icons {
+      padding: 0 12px;
+      color: $text-color;
+      font-size: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      color: $text-color;
+
+      &::placeholder {
+        color: $background-color;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .toggle-password {
+      background: none;
+      border: none;
+      padding: 0 12px;
+      color: $text-color;
+      cursor: pointer;
+
+      &:hover {
+        color: $text-color;
+      }
+    }
+  }
+
+  .error-message {
+    color: $error-color;
+    font-size: 14px;
+    margin-top: 6px;
+    padding-left: 12px;
+  }
+
+  .password-requirements {
+    margin-top: 12px;
+    padding: 12px;
+    background: $background-color;
+    border-radius: 8px;
+
+    .requirement {
+      display: flex;
+      align-items: center;
+      color: $error-color;
+      margin-bottom: 8px;
+      font-size: 14px;
+
+      &.valid {
+        color: $success-color;
+      }
+
+      i {
+        font-size: 16px;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid $background-color;
+    color: $primary-color;
+    background-color: $primary-color;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+}
+
+.auth-links {
+  text-align: center;
+  margin-top: 24px;
+
+  p {
+    color: $text-color;
+    font-size: 14px;
+
+    a {
+      color: $primary-light;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px;
+  }
+
+  .auth-header h2 {
+    font-size: 24px;
+  }
+}
+
+.product-form-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background: $background-color;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.success-snackbar {
+  background-color: $success-color;
+  color: $background-color;
+}
+
+.error-snackbar {
+  background-color: $error-color;
+  color: $background-color;
+}
+
+.form-header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: $background-color;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $primary-color;
+  font-size: 24px;
+  margin-right: 10px;
+
+}
+
+app-product-form {
+  button>i {
+    color: $background-color;
+  }
+
+}
+
+.back-button:hover {
+  color: $primary-light;
+}
+
+
+mat-spinner {
+  color: $primary-light;
+}

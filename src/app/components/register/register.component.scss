@@ -1,0 +1,139 @@
+@import 'src/styles';
+
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+  padding: 20px;
+}
+
+.register-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h1 {
+    margin: 0;
+    color: $text-color;
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    color: #666;
+    margin-top: 8px;
+  }
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  mat-form-field {
+    width: 100%;
+
+    .mat-icon {
+      color: #666;
+      margin-right: 8px;
+    }
+  }
+}
+
+.password-requirements {
+  background: $background-color;
+  padding: 20px;
+  border-radius: 10px;
+  margin: -10px 0 10px;
+  transition: all 0.3s ease;
+
+  &.show-errors {
+    background: #fff5f5;
+  }
+
+  h3 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      color: $error-color;
+      font-size: 14px;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+
+      &.valid {
+        color: $success-color;
+      }
+
+      mat-icon {
+        font-size: 16px;
+        height: 16px;
+        width: 16px;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.submit-button {
+  height: 48px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+  transition: all 0.3s ease;
+
+  &:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  mat-spinner {
+    margin: 0 auto;
+  }
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .register-card {
+    padding: 20px;
+  }
+
+  .register-header h1 {
+    font-size: 24px;
+  }
+}

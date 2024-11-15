@@ -1,0 +1,57 @@
+<div class="product-form-container">
+  <div class="form-header">
+    <button type="button" class="back-button form" (click)="goBack()">
+      <i class="material-icons">arrow_back</i>
+    </button>
+  </div>
+  <div class="product-card">
+    <h2>{{ isEditMode ? 'Editar Produto' : 'Criar Novo Produto' }}</h2>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Nome do Produto</label>
+        <input 
+          id="name" 
+          formControlName="name" 
+          [class.error]="productForm.get('name')?.invalid && productForm.get('name')?.touched" 
+        />
+        <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+          <small class="error">O nome do produto é obrigatório.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <textarea 
+          id="description" 
+          formControlName="description" 
+          [class.error]="productForm.get('description')?.invalid && productForm.get('description')?.touched">
+        </textarea>
+        <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">
+          <small class="error">A descrição é obrigatória.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Preço</label>
+        <input 
+          id="price" 
+          type="number" 
+          formControlName="price" 
+          [class.error]="productForm.get('price')?.invalid && productForm.get('price')?.touched" 
+        />
+        <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+          <small class="error">O preço é obrigatório e deve ser um número positivo.</small>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button 
+          type="submit" 
+          [disabled]="productForm.invalid || loading" 
+          class="submit-button">
+          {{ isEditMode ? 'Atualizar Produto' : 'Criar Produto' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,1 +1,74 @@
-<p>login works!</p>
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h2>Bem Vindo!</h2>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Username Field -->
+      <div class="form-group">
+        <div class="input-group">
+          <i class="material-icons">person</i>
+          <input 
+            type="text" 
+            formControlName="username" 
+            placeholder="Nome"
+            autocomplete="username">
+        </div>
+        <div class="error-message" *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.errors">
+          <span *ngIf="loginForm.get('username')?.errors?.['required']">O nome é obrigatório</span>
+          <span *ngIf="loginForm.get('username')?.errors?.['minlength']">O nome deve ter pelo menos 3 letras</span>
+        </div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <div class="input-group">
+          <i class="material-icons">email</i>
+          <input 
+            type="email" 
+            formControlName="email" 
+            placeholder="Email"
+            autocomplete="email">
+        </div>
+        <div class="error-message" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors">
+          <span *ngIf="loginForm.get('email')?.errors?.['required']">O Email é obrigatório</span>
+          <span *ngIf="loginForm.get('email')?.errors?.['email']">Formato de email inválido</span>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <div class="input-group">
+          <i class="material-icons">lock</i>
+          <input 
+            [type]="hidePassword ? 'password' : 'text'" 
+            formControlName="password" 
+            placeholder="Senha"
+            autocomplete="current-password">
+          <button 
+            type="button" 
+            class="toggle-password" 
+            (click)="hidePassword = !hidePassword">
+            <i class="material-icons">{{hidePassword ? 'visibility_off' : 'visibility'}}</i>
+          </button>
+        </div>
+        <div class="error-message" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']">
+          A senha é obrigatória
+        </div>
+      </div>
+
+      <button 
+        type="submit" 
+        class="submit-button" 
+        [disabled]="loginForm.invalid || loading">
+        <span *ngIf="!loading">Entrar</span>
+        <div class="spinner" *ngIf="loading"></div>
+      </button>
+
+      <div class="auth-links">
+        <p>Ainda não tens conta? <a routerLink="/register">Regista-te aqui</a></p>
+      </div>
+    </form>
+  </div>
+</div>
